@@ -1,0 +1,111 @@
+/* ============================================================
+   Design Tokens — sourced from Figma (Test-design-system)
+   ============================================================ */
+
+:root {
+  /* ── Typography ── */
+  --font-family:         'Inter', sans-serif;
+  --font-size-xs:        10.5px;
+  --font-size-sm:        12px;
+  --font-size-base:      14px;
+  --font-size-lg:        17.5px;
+  --font-size-xl:        21px;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold:    700;
+
+  --line-height-auto:    1;
+  --line-height-normal:  normal;
+  --line-height-150:     1.5;
+
+  /* ── Global text colors ── */
+  --color-text:           #4B5563;
+  --color-text-secondary: #6B7280;
+  --color-text-heading:   #374151;
+  --color-text-white:     #FFFFFF;
+
+  /* ── Severity colors ── */
+  --color-primary:        #3B82F6;
+  --color-primary-hover:  #2563EB;
+  --color-primary-active: #1D4ED8;
+
+  --color-secondary:        #64748B;
+  --color-secondary-hover:  #475569;
+  --color-secondary-active: #334155;
+
+  --color-success:        #22C55E;
+  --color-success-hover:  #16A34A;
+  --color-success-active: #15803D;
+
+  --color-info:           #0EA5E9;
+  --color-info-hover:     #0284C7;
+  --color-info-active:    #0369A1;
+
+  --color-warning:        #F97316;
+  --color-warning-hover:  #EA580C;
+  --color-warning-active: #C2410C;
+
+  --color-help:           #A855F7;
+  --color-help-hover:     #9333EA;
+  --color-help-active:    #7E22CE;
+
+  --color-danger:         #EF4444;
+  --color-danger-hover:   #DC2626;
+  --color-danger-active:  #B91C1C;
+
+  /* ── Surface / background ── */
+  --color-surface:        #FFFFFF;
+  --color-surface-hover:  #F3F4F6;
+  --color-surface-active: #E5E7EB;
+
+  /* ── Border ── */
+  --color-border:         #E5E7EB;
+  --border-radius-sm:     6px;
+  --border-radius-full:   9999px;
+
+  /* ── Spacing (base = 14px * 1.25 = 17.5px) ── */
+  --spacing-xs:   7px;
+  --spacing-sm:   11.5px;
+  --spacing-md:   17.5px;
+  --spacing-lg:   18.5px;
+
+  /* ── Shadows ── */
+  --shadow-card:
+    0px 2px 1px -1px #00000033,
+    0px 1px 1px 0px  #00000024,
+    0px 1px 3px 0px  #0000001F;
+
+  --shadow-raised:
+    0px 3px 1px -2px #00000033,
+    0px 2px 2px 0px  #00000024,
+    0px 1px 5px 0px  #0000001F;
+
+  --shadow-focus-ring:
+    0 0 0 2px #FFFFFF,
+    0 0 0 4px #9DC1FB;
+
+  /* ── Input ── */
+  --input-background:             #FFFFFF;
+  --input-border-color:           #D1D5DB;
+  --input-hover-border-color:     #3B82F6;
+  --input-focus-border-color:     #3B82F6;
+  --input-focus-shadow:           0 0 0 2.8px #BFDBFE;
+  --input-color:                  #4B5563;
+  --input-placeholder-color:      #6B7280;
+  --input-icon-color:             #6B7280;
+  --input-error-border-color:     #E24C4C;
+  --input-filled-background:      #F3F4F6;
+  --input-filled-focus-background:#FFFFFF;
+  --input-disabled-opacity:       0.6;
+
+  /* ── Dropdown overlay ── */
+  --dropdown-overlay-background:  #FFFFFF;
+  --dropdown-overlay-shadow:      0px 2px 12px 0px rgba(0, 0, 0, 0.10);
+  --dropdown-item-color:          #4B5563;
+  --dropdown-item-background:     #FFFFFF;
+  --dropdown-item-hover-background: #F3F4F6;
+  --dropdown-group-color:         #374151;
+  --dropdown-group-background:    #F9FAFB;
+  --dropdown-group-border:        #E5E7EB;
+}

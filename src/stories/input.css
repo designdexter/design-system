@@ -1,0 +1,154 @@
+/* InputText — uses tokens from tokens.css */
+
+/* ── Wrapper ── */
+.input-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-family);
+  width: 216px;
+}
+
+/* ── Field row (input + icons) ── */
+.input-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Base input ── */
+.input {
+  width: 100%;
+  height: 38px;
+  padding: 0 11.5px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-auto);
+  color: var(--input-color);
+  background: var(--input-background);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius-sm);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.input:hover {
+  border-color: var(--input-hover-border-color);
+}
+
+.input:focus {
+  border-color: var(--input-focus-border-color);
+  box-shadow: var(--input-focus-shadow);
+}
+
+/* ── Filled variant ── */
+.input--filled {
+  background: var(--input-filled-background);
+}
+.input--filled:hover {
+  background: var(--input-filled-background);
+}
+.input--filled:focus {
+  background: var(--input-filled-focus-background);
+}
+
+/* ── Invalid ── */
+.input--invalid {
+  border-color: var(--input-error-border-color);
+}
+.input--invalid:hover,
+.input--invalid:focus {
+  border-color: var(--input-error-border-color);
+  box-shadow: 0 0 0 2.8px #FECACA;
+}
+
+/* ── Disabled ── */
+.input:disabled {
+  opacity: var(--input-disabled-opacity);
+  cursor: not-allowed;
+  background: var(--input-background);
+}
+
+/* ── Icon padding ── */
+.input--icon-left  { padding-left: 36px; }
+.input--icon-right { padding-right: 36px; }
+
+/* ── Icons ── */
+.input-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--input-icon-color);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+.input-icon--left  { left: 11px; }
+.input-icon--right { right: 11px; }
+
+/* ── Help text ── */
+.input-help {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--input-placeholder-color);
+  line-height: var(--line-height-auto);
+}
+
+/* ── Error message ── */
+.input-error {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--input-error-border-color);
+  line-height: var(--line-height-auto);
+}
+
+/* ── Float Label ── */
+.input-float {
+  position: relative;
+}
+
+/* Use a space as placeholder to keep :placeholder-shown working */
+.input-float .input::placeholder {
+  color: transparent;
+}
+
+.input-float-label {
+  position: absolute;
+  left: 11.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--font-size-base);
+  color: var(--input-placeholder-color);
+  pointer-events: none;
+  transition: top 0.2s, font-size 0.2s, color 0.2s, transform 0.2s;
+  background: transparent;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+/* Float up when focused or has value */
+.input-float .input:focus + .input-float-label,
+.input-float .input:not(:placeholder-shown) + .input-float-label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: var(--font-size-xs);
+  color: var(--input-focus-border-color);
+  background: var(--input-background);
+}
+
+.input-float .input--invalid:focus + .input-float-label,
+.input-float .input--invalid:not(:placeholder-shown) + .input-float-label {
+  color: var(--input-error-border-color);
+}
+
+.input-float .input--filled:not(:placeholder-shown) + .input-float-label,
+.input-float .input--filled:focus + .input-float-label {
+  background: var(--input-filled-focus-background);
+}
