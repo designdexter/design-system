@@ -4,71 +4,235 @@
 
 :root {
   /* ── Typography ── */
-  --font-family:         'Inter', sans-serif;
-  --font-size-xs:        10.5px;
-  --font-size-sm:        12px;
-  --font-size-base:      14px;
-  --font-size-lg:        17.5px;
-  --font-size-xl:        21px;
+  --font-family:          'Inter', sans-serif;
+  --font-size-xs:         10.5px;
+  --font-size-sm:         12px;
+  --font-size-base:       14px;
+  --font-size-lg:         17.5px;
+  --font-size-xl:         21px;
+  --font-size-5xl:        35px;
 
-  --font-weight-regular: 400;
+  --font-weight-regular:  400;
   --font-weight-semibold: 600;
-  --font-weight-bold:    700;
+  --font-weight-bold:     700;
 
-  --line-height-auto:    1;
-  --line-height-normal:  normal;
-  --line-height-150:     1.5;
+  --line-height-auto:     1;
+  --line-height-normal:   normal;
+  --line-height-150:      1.5;
 
-  /* ── Global text colors ── */
+  /* ── Global text / ui colors ── */
+  --global-text-color:           #4B5563;
+  --global-text-secondary-color: #6B7280;
+  --global-divider-color:        #DEE2E6;
+  --global-mask-bg:              #000000;
+  --global-error-color:          #E24C4C;
+
+  /* Aliases (used throughout components) */
   --color-text:           #4B5563;
   --color-text-secondary: #6B7280;
   --color-text-heading:   #374151;
   --color-text-white:     #FFFFFF;
 
-  /* ── Severity colors ── */
-  --color-primary:        #3B82F6;
-  --color-primary-hover:  #2563EB;
-  --color-primary-active: #1D4ED8;
+  /* ── Surface ── */
+  --surface-ground:   #EFF3F8;
+  --surface-section:  #FFFFFF;
+  --surface-card:     #FFFFFF;
+  --surface-overlay:  #FFFFFF;
+  --surface-border:   #DFE7EF;
+  --surface-hover:    #F6F9FC;
 
+  /* Neutral surface scale */
+  --surface-0:   #FFFFFF;
+  --surface-50:  #FAFAFA;
+  --surface-100: #F5F5F5;
+  --surface-200: #EEEEEE;
+  --surface-300: #E0E0E0;
+  --surface-400: #BDBDBD;
+  --surface-500: #9E9E9E;
+  --surface-600: #757575;
+  --surface-700: #616161;
+  --surface-800: #424242;
+  --surface-900: #212121;
+
+  /* ── Theme — Primary ── */
+  --color-primary:              #3B82F6;
+  --color-primary-light:        #BFDBFE;
+  --color-primary-hover:        #2563EB;
+  --color-primary-active:       #1D4ED8;
+  --color-primary-contrast:     #FFFFFF;
+  --color-highlight-background: #EFF6FF;
+  --color-highlight:            #1D4ED8;
+
+  /* ── Severity colors ── */
   --color-secondary:        #64748B;
   --color-secondary-hover:  #475569;
   --color-secondary-active: #334155;
 
-  --color-success:        #22C55E;
-  --color-success-hover:  #16A34A;
-  --color-success-active: #15803D;
+  --color-success:          #22C55E;
+  --color-success-hover:    #16A34A;
+  --color-success-active:   #15803D;
 
-  --color-info:           #0EA5E9;
-  --color-info-hover:     #0284C7;
-  --color-info-active:    #0369A1;
+  --color-info:             #0EA5E9;
+  --color-info-hover:       #0284C7;
+  --color-info-active:      #0369A1;
 
-  --color-warning:        #F97316;
-  --color-warning-hover:  #EA580C;
-  --color-warning-active: #C2410C;
+  --color-warning:          #F97316;
+  --color-warning-hover:    #EA580C;
+  --color-warning-active:   #C2410C;
 
-  --color-help:           #A855F7;
-  --color-help-hover:     #9333EA;
-  --color-help-active:    #7E22CE;
+  --color-help:             #A855F7;
+  --color-help-hover:       #9333EA;
+  --color-help-active:      #7E22CE;
 
-  --color-danger:         #EF4444;
-  --color-danger-hover:   #DC2626;
-  --color-danger-active:  #B91C1C;
+  --color-danger:           #EF4444;
+  --color-danger-hover:     #DC2626;
+  --color-danger-active:    #B91C1C;
 
-  /* ── Surface / background ── */
+  /* ── Color Palette — Blue ── */
+  --blue-50:  #F5F9FF;
+  --blue-100: #D0E1FD;
+  --blue-200: #ABC9FB;
+  --blue-300: #85B2F9;
+  --blue-400: #609AF8;
+  --blue-500: #3B82F6;
+  --blue-600: #326FD1;
+  --blue-700: #295BAC;
+  --blue-800: #204887;
+  --blue-900: #183462;
+
+  /* ── Color Palette — Green ── */
+  --green-50:  #F4FCF7;
+  --green-100: #CAF1D8;
+  --green-200: #A0E6BA;
+  --green-300: #76DB9B;
+  --green-400: #4CD07D;
+  --green-500: #22C55E;
+  --green-600: #1DA750;
+  --green-700: #188A42;
+  --green-800: #136C34;
+  --green-900: #0E4F26;
+
+  /* ── Color Palette — Yellow ── */
+  --yellow-50:  #FEFBF3;
+  --yellow-100: #FAEDC4;
+  --yellow-200: #F6DE95;
+  --yellow-300: #F2D066;
+  --yellow-400: #EEC137;
+  --yellow-500: #EAB308;
+  --yellow-600: #C79807;
+  --yellow-700: #A47D06;
+  --yellow-800: #816204;
+  --yellow-900: #5E4803;
+
+  /* ── Color Palette — Cyan ── */
+  --cyan-50:  #F3FBFD;
+  --cyan-100: #C3EDF5;
+  --cyan-200: #94E0ED;
+  --cyan-300: #65D2E4;
+  --cyan-400: #35C4DC;
+  --cyan-500: #06B6D4;
+  --cyan-600: #059BB4;
+  --cyan-700: #047F94;
+  --cyan-800: #036475;
+  --cyan-900: #024955;
+
+  /* ── Color Palette — Pink ── */
+  --pink-50:  #FEF6FA;
+  --pink-100: #FAD3E7;
+  --pink-200: #F7B0D3;
+  --pink-300: #F38EC0;
+  --pink-400: #F06BAC;
+  --pink-500: #EC4899;
+  --pink-600: #C93D82;
+  --pink-700: #A5326B;
+  --pink-800: #822854;
+  --pink-900: #5E1D3D;
+
+  /* ── Color Palette — Indigo ── */
+  --indigo-50:  #F7F7FE;
+  --indigo-100: #DADAFC;
+  --indigo-200: #BCBDF9;
+  --indigo-300: #9EA0F6;
+  --indigo-400: #8183F4;
+  --indigo-500: #6366F1;
+  --indigo-600: #5457CD;
+  --indigo-700: #4547A9;
+  --indigo-800: #363885;
+  --indigo-900: #282960;
+
+  /* ── Color Palette — Teal ── */
+  --teal-50:  #F3FBFB;
+  --teal-100: #C7EEEA;
+  --teal-200: #9AE0D9;
+  --teal-300: #6DD3C8;
+  --teal-400: #41C5B7;
+  --teal-500: #14B8A6;
+  --teal-600: #119C8D;
+  --teal-700: #0E8174;
+  --teal-800: #0B655B;
+  --teal-900: #084A42;
+
+  /* ── Color Palette — Orange ── */
+  --orange-50:  #FFF8F3;
+  --orange-100: #FEDDC7;
+  --orange-200: #FCC39B;
+  --orange-300: #FBA86F;
+  --orange-400: #FA8E42;
+  --orange-500: #F97316;
+  --orange-600: #D46213;
+  --orange-700: #AE510F;
+  --orange-800: #893F0C;
+  --orange-900: #642E09;
+
+  /* ── Color Palette — Blue-Gray ── */
+  --bluegray-50:  #F7F8F9;
+  --bluegray-100: #DADEE3;
+  --bluegray-200: #BCC3CD;
+  --bluegray-300: #9FA9B7;
+  --bluegray-400: #818EA1;
+  --bluegray-500: #64748B;
+  --bluegray-600: #556376;
+  --bluegray-700: #465161;
+  --bluegray-800: #37404C;
+  --bluegray-900: #282E38;
+
+  /* ── Color Palette — Purple ── */
+  --purple-50:  #FBF7FF;
+  --purple-100: #EAD6FD;
+  --purple-200: #DAB6FC;
+  --purple-300: #C996FA;
+  --purple-400: #B975F9;
+  --purple-500: #A855F7;
+  --purple-600: #8F48D2;
+  --purple-700: #763CAD;
+  --purple-800: #5C2F88;
+  --purple-900: #432263;
+
+  /* ── Color Palette — Red ── */
+  --red-50:  #FFF5F5;
+  --red-100: #FFD0CE;
+  --red-200: #FFACA7;
+  --red-300: #FF8780;
+  --red-400: #FF6259;
+  --red-500: #FF3D32;
+  --red-600: #D9342B;
+  --red-700: #B32B23;
+  --red-800: #8C221C;
+  --red-900: #661814;
+
+  /* ── Border ── */
   --color-surface:        #FFFFFF;
   --color-surface-hover:  #F3F4F6;
   --color-surface-active: #E5E7EB;
-
-  /* ── Border ── */
   --color-border:         #E5E7EB;
   --border-radius-sm:     6px;
   --border-radius-full:   9999px;
 
-  /* ── Spacing (base = 14px * 1.25 = 17.5px) ── */
-  --spacing-xs:   7px;
-  --spacing-sm:   11.5px;
-  --spacing-md:   17.5px;
-  --spacing-lg:   18.5px;
+  /* ── Spacing ── */
+  --spacing-xs: 7px;
+  --spacing-sm: 11.5px;
+  --spacing-md: 17.5px;
+  --spacing-lg: 18.5px;
 
   /* ── Shadows ── */
   --shadow-card:
@@ -81,31 +245,203 @@
     0px 2px 2px 0px  #00000024,
     0px 1px 5px 0px  #0000001F;
 
+  --shadow-focus:
+    0 0 0 2.8px #BFDBFE;
+
   --shadow-focus-ring:
     0 0 0 2px #FFFFFF,
     0 0 0 4px #9DC1FB;
 
+  --shadow-overlay:
+    0px 1px 3px 0px #0000004D;
+
+  --shadow-overlay-menu:
+    0px 2px 12px 0px rgba(0, 0, 0, 0.10);
+
+  /* ── Button ── */
+  /* Primary */
+  --btn-bg:             #3B82F6;
+  --btn-color:          #FFFFFF;
+  --btn-border:         #3B82F6;
+  --btn-hover-bg:       #2563EB;
+  --btn-hover-color:    #FFFFFF;
+  --btn-hover-border:   #2563EB;
+  --btn-active-bg:      #1D4ED8;
+  --btn-active-color:   #FFFFFF;
+  --btn-active-border:  #1D4ED8;
+  --btn-focus-shadow:   0 0 0 2px #FFFFFF, 0 0 0 4px #BFDBFE;
+
+  --btn-outlined-hover-bg:    #3B82F6;
+  --btn-outlined-active-bg:   #3B82F6;
+
+  --btn-plain-color:           #6B7280;
+  --btn-plain-hover-bg:        #F3F4F6;
+  --btn-plain-active-bg:       #E5E7EB;
+
+  --btn-link-color:            #1D4ED8;
+  --btn-link-hover-color:      #1D4ED8;
+  --btn-link-focus-shadow:     0 0 0 2px #FFFFFF, 0 0 0 4px #BFDBFE;
+
+  /* Secondary */
+  --btn-secondary-bg:                  #64748B;
+  --btn-secondary-color:               #FFFFFF;
+  --btn-secondary-border:              #64748B;
+  --btn-secondary-hover-bg:            #475569;
+  --btn-secondary-hover-color:         #FFFFFF;
+  --btn-secondary-hover-border:        #475569;
+  --btn-secondary-active-bg:           #334155;
+  --btn-secondary-active-color:        #FFFFFF;
+  --btn-secondary-active-border:       #334155;
+  --btn-secondary-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #E2E8F0;
+  --btn-secondary-outlined-hover-bg:   #64748B;
+  --btn-secondary-outlined-active-bg:  #64748B;
+
+  /* Info */
+  --btn-info-bg:                  #0EA5E9;
+  --btn-info-color:               #FFFFFF;
+  --btn-info-border:              #0EA5E9;
+  --btn-info-hover-bg:            #0284C7;
+  --btn-info-hover-color:         #FFFFFF;
+  --btn-info-hover-border:        #0284C7;
+  --btn-info-active-bg:           #0369A1;
+  --btn-info-active-color:        #FFFFFF;
+  --btn-info-active-border:       #0369A1;
+  --btn-info-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #BFDBFE;
+  --btn-info-outlined-hover-bg:   #3B82F6;
+  --btn-info-outlined-active-bg:  #3B82F6;
+
+  /* Success */
+  --btn-success-bg:                  #22C55E;
+  --btn-success-color:               #FFFFFF;
+  --btn-success-border:              #22C55E;
+  --btn-success-hover-bg:            #16A34A;
+  --btn-success-hover-color:         #FFFFFF;
+  --btn-success-hover-border:        #16A34A;
+  --btn-success-active-bg:           #15803D;
+  --btn-success-active-color:        #FFFFFF;
+  --btn-success-active-border:       #15803D;
+  --btn-success-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #BBF7D0;
+  --btn-success-outlined-hover-bg:   #22C55E;
+  --btn-success-outlined-active-bg:  #22C55E;
+
+  /* Warning */
+  --btn-warning-bg:                  #F97316;
+  --btn-warning-color:               #FFFFFF;
+  --btn-warning-border:              #F97316;
+  --btn-warning-hover-bg:            #EA580C;
+  --btn-warning-hover-color:         #FFFFFF;
+  --btn-warning-hover-border:        #EA580C;
+  --btn-warning-active-bg:           #C2410C;
+  --btn-warning-active-color:        #FFFFFF;
+  --btn-warning-active-border:       #C2410C;
+  --btn-warning-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #FDE68A;
+  --btn-warning-outlined-hover-bg:   #F59E0B;
+  --btn-warning-outlined-active-bg:  #F59E0B;
+
+  /* Help */
+  --btn-help-bg:                  #A855F7;
+  --btn-help-color:               #FFFFFF;
+  --btn-help-border:              #A855F7;
+  --btn-help-hover-bg:            #9333EA;
+  --btn-help-hover-color:         #FFFFFF;
+  --btn-help-hover-border:        #9333EA;
+  --btn-help-active-bg:           #7E22CE;
+  --btn-help-active-color:        #FFFFFF;
+  --btn-help-active-border:       #7E22CE;
+  --btn-help-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #E9D5FF;
+  --btn-help-outlined-hover-bg:   #A855F7;
+  --btn-help-outlined-active-bg:  #A855F7;
+
+  /* Danger */
+  --btn-danger-bg:                  #EF4444;
+  --btn-danger-color:               #FFFFFF;
+  --btn-danger-border:              #EF4444;
+  --btn-danger-hover-bg:            #DC2626;
+  --btn-danger-hover-color:         #FFFFFF;
+  --btn-danger-hover-border:        #DC2626;
+  --btn-danger-active-bg:           #B91C1C;
+  --btn-danger-active-color:        #FFFFFF;
+  --btn-danger-active-border:       #B91C1C;
+  --btn-danger-focus-shadow:        0 0 0 2px #FFFFFF, 0 0 0 4px #FECACA;
+  --btn-danger-outlined-hover-bg:   #EF4444;
+  --btn-danger-outlined-active-bg:  #EF4444;
+
   /* ── Input ── */
-  --input-background:             #FFFFFF;
-  --input-border-color:           #D1D5DB;
-  --input-hover-border-color:     #3B82F6;
-  --input-focus-border-color:     #3B82F6;
-  --input-focus-shadow:           0 0 0 2.8px #BFDBFE;
-  --input-color:                  #4B5563;
-  --input-placeholder-color:      #6B7280;
-  --input-icon-color:             #6B7280;
-  --input-error-border-color:     #E24C4C;
-  --input-filled-background:      #F3F4F6;
-  --input-filled-focus-background:#FFFFFF;
-  --input-disabled-opacity:       0.6;
+  --input-background:              #FFFFFF;
+  --input-border-color:            #D1D5DB;
+  --input-hover-border-color:      #3B82F6;
+  --input-focus-border-color:      #3B82F6;
+  --input-focus-shadow:            0 0 0 2.8px #BFDBFE;
+  --input-color:                   #4B5563;
+  --input-placeholder-color:       #6B7280;
+  --input-icon-color:              #6B7280;
+  --input-error-border-color:      #E24C4C;
+  --input-filled-background:       #F3F4F6;
+  --input-filled-focus-background: #FFFFFF;
+  --input-disabled-opacity:        0.6;
+
+  /* ── ScrollPanel ── */
+  --scrollpanel-bg:           #FFFFFF;
+  --scrollpanel-track-bg:     #F9FAFB;
+  --scrollpanel-track-border: transparent;
+  --scrollpanel-thumb-color:  #CBD5E1;
+  --scrollpanel-thumb-radius: 6px;
+  --scrollpanel-bar-color:    #3B82F6;
+  --scrollpanel-bar-radius:   3px;
+
+  /* ── Divider ── */
+  --divider-color: #E5E7EB;
+
+  /* ── Accordion ── */
+  --accordion-header-bg:                  #F9FAFB;
+  --accordion-header-color:               #6B7280;
+  --accordion-header-border:              #E5E7EB;
+  --accordion-header-hover-bg:            #F3F4F6;
+  --accordion-header-hover-color:         #374151;
+  --accordion-header-hover-border:        #E5E7EB;
+  --accordion-header-active-bg:           #F9FAFB;
+  --accordion-header-active-color:        #374151;
+  --accordion-header-active-border:       #E5E7EB;
+  --accordion-header-active-hover-bg:     #F3F4F6;
+  --accordion-header-active-hover-color:  #374151;
+  --accordion-header-active-hover-border: #E5E7EB;
+  --accordion-content-bg:                 #FFFFFF;
+  --accordion-content-color:              #4B5563;
+  --accordion-content-border:             #E5E7EB;
+
+  /* ── Panel ── */
+  --panel-header-bg:           #F9FAFB;
+  --panel-header-color:        #374151;
+  --panel-header-border:       #E5E7EB;
+  --panel-header-hover-bg:     #F3F4F6;
+  --panel-header-hover-color:  #374151;
+  --panel-header-hover-border: #E5E7EB;
+  --panel-content-bg:          #FFFFFF;
+  --panel-content-color:       #4B5563;
+  --panel-content-border:      #E5E7EB;
+
+  /* ── TabView ── */
+  --tabview-nav-bg:              #FFFFFF;
+  --tabview-nav-border:          #E5E7EB;
+  --tabview-header-bg:           #FFFFFF;
+  --tabview-header-color:        #6B7280;
+  --tabview-header-border:       #E5E7EB;
+  --tabview-header-hover-bg:     #FFFFFF;
+  --tabview-header-hover-color:  #6B7280;
+  --tabview-header-hover-border: #9CA3AF;
+  --tabview-header-active-bg:    #FFFFFF;
+  --tabview-header-active-color: #3B82F6;
+  --tabview-header-active-border:#3B82F6;
+  --tabview-content-bg:          #FFFFFF;
+  --tabview-content-color:       #4B5563;
 
   /* ── Dropdown overlay ── */
-  --dropdown-overlay-background:  #FFFFFF;
-  --dropdown-overlay-shadow:      0px 2px 12px 0px rgba(0, 0, 0, 0.10);
-  --dropdown-item-color:          #4B5563;
-  --dropdown-item-background:     #FFFFFF;
+  --dropdown-overlay-background:    #FFFFFF;
+  --dropdown-overlay-shadow:        0px 2px 12px 0px rgba(0, 0, 0, 0.10);
+  --dropdown-item-color:            #4B5563;
+  --dropdown-item-background:       #FFFFFF;
   --dropdown-item-hover-background: #F3F4F6;
-  --dropdown-group-color:         #374151;
-  --dropdown-group-background:    #F9FAFB;
-  --dropdown-group-border:        #E5E7EB;
+  --dropdown-group-color:           #374151;
+  --dropdown-group-background:      #F9FAFB;
+  --dropdown-group-border:          #E5E7EB;
 }

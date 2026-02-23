@@ -1,0 +1,80 @@
+/* ScrollPanel — uses tokens from tokens.css */
+
+.scrollpanel {
+  background: var(--scrollpanel-bg);
+  border-radius: var(--border-radius-sm);
+  padding: 7px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.scrollpanel--both {
+  overflow: auto;
+}
+
+/* ── Custom scrollbar (WebKit) ── */
+.scrollpanel::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.scrollpanel::-webkit-scrollbar-track {
+  background: var(--scrollpanel-track-bg);
+  border-radius: var(--scrollpanel-thumb-radius);
+  border: 1px solid var(--scrollpanel-track-border);
+}
+
+/* Default variant — subtle gray thumb */
+.scrollpanel--default::-webkit-scrollbar-thumb {
+  background: var(--scrollpanel-thumb-color);
+  border-radius: var(--scrollpanel-thumb-radius);
+}
+
+.scrollpanel--default::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Custom bar variant — primary blue thumb */
+.scrollpanel--custom-bar::-webkit-scrollbar-thumb,
+.scrollpanel--both::-webkit-scrollbar-thumb {
+  background: var(--scrollpanel-bar-color);
+  border-radius: var(--scrollpanel-bar-radius);
+}
+
+.scrollpanel--custom-bar::-webkit-scrollbar-thumb:hover,
+.scrollpanel--both::-webkit-scrollbar-thumb:hover {
+  background: var(--btn-hover-bg);
+}
+
+/* Firefox */
+.scrollpanel--default {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollpanel-thumb-color) var(--scrollpanel-track-bg);
+}
+
+.scrollpanel--custom-bar,
+.scrollpanel--both {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollpanel-bar-color) var(--scrollpanel-track-bg);
+}
+
+/* ── Content ── */
+.scrollpanel__content {
+  padding: 7px;
+}
+
+/* Wide content forces horizontal scroll in 'both' variant */
+.scrollpanel__content--wide {
+  width: 600px;
+}
+
+.scrollpanel__text {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--panel-content-color);
+  line-height: var(--line-height-150);
+  white-space: pre-wrap;
+}

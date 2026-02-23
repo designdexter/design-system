@@ -1,0 +1,65 @@
+/* Panel — uses tokens from tokens.css */
+
+.panel {
+  font-family: var(--font-family);
+  border: 1px solid var(--panel-header-border);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  background: var(--panel-header-bg);
+  border-bottom: 1px solid var(--panel-header-border);
+  color: var(--panel-header-color);
+}
+
+.panel__header--toggleable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.panel__header--toggleable:hover {
+  background: var(--panel-header-hover-bg);
+  color: var(--panel-header-hover-color);
+  border-color: var(--panel-header-hover-border);
+}
+
+/* ── Title ── */
+.panel__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: inherit;
+  line-height: var(--line-height-auto);
+}
+
+/* ── Toggle chevron ── */
+.panel__chevron {
+  flex-shrink: 0;
+  color: inherit;
+  transition: transform 0.2s;
+}
+
+.panel__chevron--collapsed {
+  transform: rotate(-90deg);
+}
+
+/* ── Content ── */
+.panel__content {
+  padding: var(--spacing-md);
+  background: var(--panel-content-bg);
+  border-top: 1px solid var(--panel-content-border);
+}
+
+.panel__body {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--panel-content-color);
+  line-height: var(--line-height-150);
+}
