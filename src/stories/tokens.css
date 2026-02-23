@@ -435,6 +435,45 @@
   --tabview-content-bg:          #FFFFFF;
   --tabview-content-color:       #4B5563;
 
+  /* ── ToggleButton ── */
+  --togglebtn-bg:                  #FFFFFF;
+  --togglebtn-border:              #D1D5DB;
+  --togglebtn-color:               #4B5563;
+  --togglebtn-icon-color:          #6B7280;
+  --togglebtn-hover-bg:            #F3F4F6;
+  --togglebtn-hover-border:        #D1D5DB;
+  --togglebtn-hover-color:         #4B5563;
+  --togglebtn-icon-hover-color:    #374151;
+  --togglebtn-active-bg:           #3B82F6;
+  --togglebtn-active-border:       #3B82F6;
+  --togglebtn-active-color:        #FFFFFF;
+  --togglebtn-icon-active-color:   #FFFFFF;
+  --togglebtn-active-hover-bg:     #2563EB;
+  --togglebtn-active-hover-border: #2563EB;
+  --togglebtn-active-hover-color:  #FFFFFF;
+
+  /* ── Slider ── */
+  --slider-track-height:     4px;
+  --slider-track-radius:     2px;
+  --slider-track-bg:         #E5E7EB;
+  --slider-range-bg:         #3B82F6;
+  --slider-handle-size:      16px;
+  --slider-handle-bg:        #FFFFFF;
+  --slider-handle-border:    #3B82F6;
+  --slider-handle-radius:    8px;
+  --slider-handle-hover-bg:  #3B82F6;
+  --slider-vertical-length:  150px;
+
+  /* ── Checkbox ── */
+  --checkbox-size:                22px;
+  --checkbox-icon-size:           14px;
+  --checkbox-border-color:        #D1D5DB;
+  --checkbox-active-bg:           #3B82F6;
+  --checkbox-active-border:       #3B82F6;
+  --checkbox-active-hover-bg:     #1D4ED8;
+  --checkbox-active-hover-border: #1D4ED8;
+  --checkbox-icon-color:          #FFFFFF;
+
   /* ── Dropdown overlay ── */
   --dropdown-overlay-background:    #FFFFFF;
   --dropdown-overlay-shadow:        0px 2px 12px 0px rgba(0, 0, 0, 0.10);

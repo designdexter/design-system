@@ -1,0 +1,198 @@
+/* Slider — uses tokens from tokens.css */
+
+/* ── Base ── */
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* ── Track (single slider) ── */
+.slider__input {
+  appearance: none;
+  width: 100%;
+  height: var(--slider-track-height);
+  border-radius: var(--slider-track-radius);
+  background: linear-gradient(
+    to right,
+    var(--slider-range-bg)  0%,
+    var(--slider-range-bg)  var(--fill-pct, 0%),
+    var(--slider-track-bg)  var(--fill-pct, 0%),
+    var(--slider-track-bg)  100%
+  );
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Thumb ── */
+.slider__input::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--slider-handle-size);
+  height: var(--slider-handle-size);
+  border-radius: 50%;
+  background: var(--slider-handle-bg);
+  border: 2px solid var(--slider-handle-border);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.slider__input::-moz-range-thumb {
+  width: var(--slider-handle-size);
+  height: var(--slider-handle-size);
+  border-radius: 50%;
+  background: var(--slider-handle-bg);
+  border: 2px solid var(--slider-handle-border);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+/* Thumb hover */
+.slider__input:hover::-webkit-slider-thumb {
+  background: var(--slider-handle-hover-bg);
+}
+
+.slider__input:hover::-moz-range-thumb {
+  background: var(--slider-handle-hover-bg);
+}
+
+/* Thumb focus */
+.slider__input:focus-visible::-webkit-slider-thumb {
+  box-shadow: var(--input-focus-shadow);
+}
+
+.slider__input:focus-visible::-moz-range-thumb {
+  box-shadow: var(--input-focus-shadow);
+}
+
+/* ── Number input ── */
+.slider__number-input {
+  width: 100%;
+  height: 35px;
+  padding: 0 11.5px;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--input-color);
+  background: var(--input-background);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius-sm);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.slider__number-input:hover {
+  border-color: var(--input-hover-border-color);
+}
+
+.slider__number-input:focus {
+  border-color: var(--input-focus-border-color);
+  box-shadow: var(--input-focus-shadow);
+}
+
+/* ── Vertical ── */
+.slider--vertical {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+.slider--vertical .slider__input {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: var(--slider-track-height);
+  height: var(--slider-vertical-length);
+  background: linear-gradient(
+    to right,
+    var(--slider-range-bg)  0%,
+    var(--slider-range-bg)  var(--fill-pct, 0%),
+    var(--slider-track-bg)  var(--fill-pct, 0%),
+    var(--slider-track-bg)  100%
+  );
+}
+
+/* ── Range slider ── */
+.slider--range {
+  position: relative;
+  height: var(--slider-handle-size);
+  width: 100%;
+}
+
+.slider__range-track {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  height: var(--slider-track-height);
+  background: var(--slider-track-bg);
+  border-radius: var(--slider-track-radius);
+  pointer-events: none;
+}
+
+.slider__range-fill {
+  position: absolute;
+  height: 100%;
+  background: var(--slider-range-bg);
+  border-radius: var(--slider-track-radius);
+}
+
+.slider--range .slider__input--range {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.slider--range .slider__input--range::-webkit-slider-runnable-track {
+  background: transparent;
+  height: var(--slider-track-height);
+}
+
+.slider--range .slider__input--range::-moz-range-track {
+  background: transparent;
+}
+
+.slider--range .slider__input--range::-moz-range-progress {
+  background: transparent;
+}
+
+.slider--range .slider__input--range::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: all;
+  width: var(--slider-handle-size);
+  height: var(--slider-handle-size);
+  border-radius: 50%;
+  background: var(--slider-handle-bg);
+  border: 2px solid var(--slider-handle-border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.slider--range .slider__input--range::-moz-range-thumb {
+  pointer-events: all;
+  width: var(--slider-handle-size);
+  height: var(--slider-handle-size);
+  border-radius: 50%;
+  background: var(--slider-handle-bg);
+  border: 2px solid var(--slider-handle-border);
+  cursor: pointer;
+}
+
+.slider--range .slider__input--range:hover::-webkit-slider-thumb {
+  background: var(--slider-handle-hover-bg);
+}
+
+.slider--range .slider__input--range:hover::-moz-range-thumb {
+  background: var(--slider-handle-hover-bg);
+}

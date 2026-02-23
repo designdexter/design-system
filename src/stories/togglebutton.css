@@ -1,0 +1,70 @@
+/* ToggleButton — uses tokens from tokens.css */
+
+.togglebtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11.5px;
+  border: 1px solid var(--togglebtn-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--togglebtn-bg);
+  color: var(--togglebtn-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-auto);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.togglebtn__icon {
+  display: flex;
+  align-items: center;
+  color: var(--togglebtn-icon-color);
+  transition: color 0.15s;
+}
+
+/* ── Hover ── */
+.togglebtn:hover:not(:disabled) {
+  background: var(--togglebtn-hover-bg);
+  border-color: var(--togglebtn-hover-border);
+  color: var(--togglebtn-hover-color);
+}
+
+.togglebtn:hover:not(:disabled) .togglebtn__icon {
+  color: var(--togglebtn-icon-hover-color);
+}
+
+/* ── Active (toggled on) ── */
+.togglebtn--active {
+  background: var(--togglebtn-active-bg);
+  border-color: var(--togglebtn-active-border);
+  color: var(--togglebtn-active-color);
+}
+
+.togglebtn--active .togglebtn__icon {
+  color: var(--togglebtn-icon-active-color);
+}
+
+.togglebtn--active:hover:not(:disabled) {
+  background: var(--togglebtn-active-hover-bg);
+  border-color: var(--togglebtn-active-hover-border);
+  color: var(--togglebtn-active-hover-color);
+}
+
+.togglebtn--active:hover:not(:disabled) .togglebtn__icon {
+  color: var(--togglebtn-icon-active-color);
+}
+
+/* ── Focus ── */
+.togglebtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #9DC1FB;
+}
+
+/* ── Disabled ── */
+.togglebtn--disabled,
+.togglebtn:disabled {
+  opacity: var(--input-disabled-opacity);
+  cursor: not-allowed;
+}
