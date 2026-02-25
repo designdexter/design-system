@@ -72,7 +72,99 @@ const questions = [
     difficulty: "advanced",
     category: "Accessibility",
     explanation: "WCAG 2.1 AA requires a minimum 4.5:1 contrast ratio for normal text and 3:1 for large text (18pt+ or 14pt+ bold)."
-  }
+  },
+  {id: 6,
+    question: "What is the 'peak-end rule' in user experience?",
+    options: [
+      "Users remember the most recent interaction and the overall average experience",
+      "Users judge an experience based on its most intense point and its end",
+      "Users prefer experiences that have a clear beginning, middle, and end",
+      "Users are more likely to return to an experience if it ends on a positive note"
+    ],
+    answer: 1,
+    difficulty: "advanced",
+    category: "Psychology",
+    explanation: "The peak-end rule suggests that people judge an experience largely based on how they felt at its most intense point and at its end, rather than the total sum or average of every moment."
+    },
+    {id: 7,
+      question: "Which of the following is NOT a common method for conducting user research?",
+      options: [
+        "Surveys",
+        "A/B testing",
+        "Card sorting",
+        "Heatmaps"
+      ],
+      answer: 1,
+      difficulty: "beginner",
+      category: "User Research",
+      explanation: "A/B testing is a method for comparing two versions of a design to see which performs better, but it's not typically used for gathering qualitative user insights like surveys, card sorting, or heatmaps."
+    },
+    {id: 8,
+      question: "What is the main goal of 'mobile-first' design?",
+      options: [
+        "To create a separate mobile app for users",
+        "To design for the smallest screen first and then scale up",
+        "To prioritize touch interactions over mouse interactions",
+        "To use mobile design patterns on desktop interfaces"
+      ],
+      answer: 1,
+      difficulty: "intermediate",
+      category: "Responsive Design",
+      explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring that the core content and functionality are prioritized before adding enhancements for larger screens."
+    },
+    {id: 9,
+      question: "In UX writing, what does the term 'microcopy' refer to?",
+      options: [
+        "The main body of text on a webpage",
+        "Short pieces of text that guide users through an interface",
+        "Legal disclaimers and terms of service",
+        "The font size used for body text"
+      ],
+      answer: 1,
+      difficulty: "beginner",
+      category: "UX Writing",
+      explanation: "Microcopy refers to the small bits of text that help users navigate an interface, such as button labels, error messages, and tooltips."
+    },
+    {id: 10,
+      question: "What is 'dark pattern' in UX design?",
+      options: [
+        "A design that uses dark colors to create a moody atmosphere",
+        "A design that intentionally tricks users into doing something they might not want to do",
+        "A design that is optimized for use in low-light environments",
+        "A design that follows the latest trends in UI aesthetics"
+      ],
+      answer: 1,
+      difficulty: "advanced",
+      category: "Ethics",
+      explanation: "Dark patterns are deceptive design techniques used to manipulate users into taking actions they might not otherwise take, such as signing up for a newsletter or making a purchase."
+    },
+    {
+      id: 11,
+      question: "Which of the following is an example of a 'call to action' (CTA) in UX design?",
+      options: [
+        "A headline that describes the product",
+        "A button that prompts users to take a specific action",
+        "A navigation menu that links to different pages",
+        "A footer that contains contact information"  
+      ],
+      answer: 1,
+      difficulty: "beginner",
+      category: "UI Elements",
+      explanation: "A call to action (CTA) is a button or link that encourages users to take a specific action, such as 'Sign Up', 'Buy Now', or 'Learn More'."
+    },
+    { id: 12,
+      question: "What is the 'Hick's Law' in UX design?",
+      options: [
+        "The time it takes to make a decision increases with the number of options",
+        "Users prefer interfaces that follow a hierarchical structure",
+        "The more features an app has, the more likely users are to use it",
+        "Users are more likely to engage with content that is visually appealing"
+      ],
+      answer: 0,
+      difficulty: "intermediate",
+      category: "Design Principles",
+      explanation: "Hick's Law states that the time it takes for a user to make a decision increases as the number of options increases. This is why it's important to keep choices simple and limited."
+    }
 ];
 
 // ── Types ──────────────────────────────────────────────────────
