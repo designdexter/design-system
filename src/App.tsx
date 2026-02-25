@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import { Button } from './stories/Button';
 
 // ── Question Bank ──────────────────────────────────────────────
@@ -73,7 +74,8 @@ const questions = [
     category: "Accessibility",
     explanation: "WCAG 2.1 AA requires a minimum 4.5:1 contrast ratio for normal text and 3:1 for large text (18pt+ or 14pt+ bold)."
   },
-  {id: 6,
+  {
+    id: 6,
     question: "What is the 'peak-end rule' in user experience?",
     options: [
       "Users remember the most recent interaction and the overall average experience",
@@ -85,128 +87,147 @@ const questions = [
     difficulty: "advanced",
     category: "Psychology",
     explanation: "The peak-end rule suggests that people judge an experience largely based on how they felt at its most intense point and at its end, rather than the total sum or average of every moment."
-    },
-    {id: 7,
-      question: "Which of the following is NOT a common method for conducting user research?",
-      options: [
-        "Surveys",
-        "A/B testing",
-        "Card sorting",
-        "Heatmaps"
-      ],
-      answer: 1,
-      difficulty: "beginner",
-      category: "User Research",
-      explanation: "A/B testing is a method for comparing two versions of a design to see which performs better, but it's not typically used for gathering qualitative user insights like surveys, card sorting, or heatmaps."
-    },
-    {id: 8,
-      question: "What is the main goal of 'mobile-first' design?",
-      options: [
-        "To create a separate mobile app for users",
-        "To design for the smallest screen first and then scale up",
-        "To prioritize touch interactions over mouse interactions",
-        "To use mobile design patterns on desktop interfaces"
-      ],
-      answer: 1,
-      difficulty: "intermediate",
-      category: "Responsive Design",
-      explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring that the core content and functionality are prioritized before adding enhancements for larger screens."
-    },
-    {id: 9,
-      question: "In UX writing, what does the term 'microcopy' refer to?",
-      options: [
-        "The main body of text on a webpage",
-        "Short pieces of text that guide users through an interface",
-        "Legal disclaimers and terms of service",
-        "The font size used for body text"
-      ],
-      answer: 1,
-      difficulty: "beginner",
-      category: "UX Writing",
-      explanation: "Microcopy refers to the small bits of text that help users navigate an interface, such as button labels, error messages, and tooltips."
-    },
-    {id: 10,
-      question: "What is 'dark pattern' in UX design?",
-      options: [
-        "A design that uses dark colors to create a moody atmosphere",
-        "A design that intentionally tricks users into doing something they might not want to do",
-        "A design that is optimized for use in low-light environments",
-        "A design that follows the latest trends in UI aesthetics"
-      ],
-      answer: 1,
-      difficulty: "advanced",
-      category: "Ethics",
-      explanation: "Dark patterns are deceptive design techniques used to manipulate users into taking actions they might not otherwise take, such as signing up for a newsletter or making a purchase."
-    },
-    {
-      id: 11,
-      question: "Which of the following is an example of a 'call to action' (CTA) in UX design?",
-      options: [
-        "A headline that describes the product",
-        "A button that prompts users to take a specific action",
-        "A navigation menu that links to different pages",
-        "A footer that contains contact information"  
-      ],
-      answer: 1,
-      difficulty: "beginner",
-      category: "UI Elements",
-      explanation: "A call to action (CTA) is a button or link that encourages users to take a specific action, such as 'Sign Up', 'Buy Now', or 'Learn More'."
-    },
-    { id: 12,
-      question: "What is the 'Hick's Law' in UX design?",
-      options: [
-        "The time it takes to make a decision increases with the number of options",
-        "Users prefer interfaces that follow a hierarchical structure",
-        "The more features an app has, the more likely users are to use it",
-        "Users are more likely to engage with content that is visually appealing"
-      ],
-      answer: 0,
-      difficulty: "intermediate",
-      category: "Design Principles",
-      explanation: "Hick's Law states that the time it takes for a user to make a decision increases as the number of options increases. This is why it's important to keep choices simple and limited."
-    },
-    {id: 13,
-      question: "According to Gestalt principles, what term describes our tendency to group objects that are close together as belonging to the same unit?",
-      options: [
-        "Similarity",
-        "Continuity",
-        "Closure",
-        "Proximity"
+  },
+  {
+    id: 7,
+    question: "Which of the following is NOT a common method for conducting user research?",
+    options: [
+      "Surveys",
+      "A/B testing",
+      "Card sorting",
+      "Heatmaps"
     ],
-      answer: 3,
-      difficulty: "intermediate",
-      category: "Design Principles",
-      explanation: "Proximity is a Gestalt principle that describes our tendency to group objects that are close together as belonging to the same unit."
-    },
-    {id: 14,
-      question: "Nielsen's research found that a small number of participants is enough to uncover the majority of usability issues. What is that number?",
-      options: [
-        "3",
-        "4",
-        "5",
-        "20"
-      ],
-      answer: 2,
-      difficulty: "intermediate",
-      category: "Research Methods",
-      explanation: "Nielsen's research found that 5 participants are enough to uncover the majority of usability issues in a product."
-    },
-    {id: 15,
-      question: "What is the 'Zeigarnik Effect' in user experience?",
-      options: [
-        "The tendency for users to remember completed tasks better than incomplete ones",
-        "The tendency for users to prefer interfaces that are visually balanced",
-        "The tendency for users to be more engaged with content that is interactive",
-        "The tendency for users to remember uncompleted or interrupted tasks better than completed ones"
-      ],
-      answer: 3,
-      difficulty: "advanced",
-      category: "Psychology",
-      explanation: "The Zeigarnik Effect is the psychological phenomenon where people remember uncompleted or interrupted tasks better than completed ones, which can be leveraged in UX design to encourage user engagement."
-    },
-    {id: 16,
-      question: "Don Norman identified two 'gulfs' that explain where breakdowns in human-computer interaction occur. Which answer correctly names both?",
-    }
+    answer: 1,
+    difficulty: "beginner",
+    category: "User Research",
+    explanation: "A/B testing is a method for comparing two versions of a design to see which performs better, but it's not typically used for gathering qualitative user insights like surveys, card sorting, or heatmaps."
+  },
+  {
+    id: 8,
+    question: "What is the main goal of 'mobile-first' design?",
+    options: [
+      "To create a separate mobile app for users",
+      "To design for the smallest screen first and then scale up",
+      "To prioritize touch interactions over mouse interactions",
+      "To use mobile design patterns on desktop interfaces"
+    ],
+    answer: 1,
+    difficulty: "intermediate",
+    category: "Responsive Design",
+    explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring that the core content and functionality are prioritized before adding enhancements for larger screens."
+  },
+  {
+    id: 9,
+    question: "In UX writing, what does the term 'microcopy' refer to?",
+    options: [
+      "The main body of text on a webpage",
+      "Short pieces of text that guide users through an interface",
+      "Legal disclaimers and terms of service",
+      "The font size used for body text"
+    ],
+    answer: 1,
+    difficulty: "beginner",
+    category: "UX Writing",
+    explanation: "Microcopy refers to the small bits of text that help users navigate an interface, such as button labels, error messages, and tooltips."
+  },
+  {
+    id: 10,
+    question: "What is a 'dark pattern' in UX design?",
+    options: [
+      "A design that uses dark colors to create a moody atmosphere",
+      "A design that intentionally tricks users into doing something they might not want to do",
+      "A design that is optimized for use in low-light environments",
+      "A design that follows the latest trends in UI aesthetics"
+    ],
+    answer: 1,
+    difficulty: "advanced",
+    category: "Ethics",
+    explanation: "Dark patterns are deceptive design techniques used to manipulate users into taking actions they might not otherwise take, such as signing up for a newsletter or making a purchase."
+  },
+  {
+    id: 11,
+    question: "Which of the following is an example of a 'call to action' (CTA) in UX design?",
+    options: [
+      "A headline that describes the product",
+      "A button that prompts users to take a specific action",
+      "A navigation menu that links to different pages",
+      "A footer that contains contact information"
+    ],
+    answer: 1,
+    difficulty: "beginner",
+    category: "UI Elements",
+    explanation: "A call to action (CTA) is a button or link that encourages users to take a specific action, such as 'Sign Up', 'Buy Now', or 'Learn More'."
+  },
+  {
+    id: 12,
+    question: "What is 'Hick's Law' in UX design?",
+    options: [
+      "The time it takes to make a decision increases with the number of options",
+      "Users prefer interfaces that follow a hierarchical structure",
+      "The more features an app has, the more likely users are to use it",
+      "Users are more likely to engage with content that is visually appealing"
+    ],
+    answer: 0,
+    difficulty: "intermediate",
+    category: "Design Principles",
+    explanation: "Hick's Law states that the time it takes for a user to make a decision increases as the number of options increases. This is why it's important to keep choices simple and limited."
+  },
+  {
+    id: 13,
+    question: "According to Gestalt principles, what term describes our tendency to group objects that are close together?",
+    options: [
+      "Similarity",
+      "Continuity",
+      "Closure",
+      "Proximity"
+    ],
+    answer: 3,
+    difficulty: "intermediate",
+    category: "Design Principles",
+    explanation: "Proximity is a Gestalt principle that describes our tendency to group objects that are close together as belonging to the same unit."
+  },
+  {
+    id: 14,
+    question: "Nielsen's research found that a small number of participants is enough to uncover the majority of usability issues. What is that number?",
+    options: [
+      "3",
+      "4",
+      "5",
+      "20"
+    ],
+    answer: 2,
+    difficulty: "intermediate",
+    category: "Research Methods",
+    explanation: "Nielsen's research found that 5 participants are enough to uncover the majority of usability issues in a product."
+  },
+  {
+    id: 15,
+    question: "What is the 'Zeigarnik Effect' in user experience?",
+    options: [
+      "The tendency for users to remember completed tasks better than incomplete ones",
+      "The tendency for users to prefer interfaces that are visually balanced",
+      "The tendency for users to be more engaged with content that is interactive",
+      "The tendency for users to remember uncompleted or interrupted tasks better than completed ones"
+    ],
+    answer: 3,
+    difficulty: "advanced",
+    category: "Psychology",
+    explanation: "The Zeigarnik Effect is the psychological phenomenon where people remember uncompleted or interrupted tasks better than completed ones, which can be leveraged in UX design to encourage user engagement."
+  },
+  {
+    id: 16,
+    question: "Don Norman identified two 'gulfs' that explain where breakdowns in human-computer interaction occur. Which answer correctly names both?",
+    options: [
+      "Gulf of Execution and Gulf of Evaluation",
+      "Gulf of Perception and Gulf of Action",
+      "Gulf of Intention and Gulf of Feedback",
+      "Gulf of Cognition and Gulf of Emotion"
+    ],
+    answer: 0,
+    difficulty: "advanced",
+    category: "Design Principles",
+    explanation: "Don Norman's two gulfs: the Gulf of Execution (difficulty figuring out how to make a system do what you want) and the Gulf of Evaluation (difficulty figuring out whether the system has done what you wanted)."
+  }
 ];
 
 // ── Types ──────────────────────────────────────────────────────
@@ -214,8 +235,6 @@ type Screen = 'welcome' | 'game' | 'results';
 type Level = 'beginner' | 'intermediate' | 'advanced';
 
 // ── App ────────────────────────────────────────────────────────
-import { useState } from 'react';
-
 export default function App() {
   const [screen, setScreen] = useState<Screen>('welcome');
   const [level, setLevel] = useState<Level>('beginner');
@@ -223,14 +242,11 @@ export default function App() {
   const [selected, setSelected] = useState<number | null>(null);
   const [score, setScore] = useState(0);
 
-  // Filter questions by chosen level
   const filtered = questions.filter(q => q.difficulty === level);
   const current = filtered[currentIndex];
   const isLast = currentIndex === filtered.length - 1;
 
-  if (!current || !current.options) {
-    return null;
-  }
+  if (!current || !current.options) return null;
 
   function startGame(chosenLevel: Level) {
     setLevel(chosenLevel);
@@ -241,7 +257,7 @@ export default function App() {
   }
 
   function handleAnswer(index: number) {
-    if (selected !== null) return; // already answered
+    if (selected !== null) return;
     setSelected(index);
     if (index === current.answer) {
       setScore(s => s + 1);
@@ -299,9 +315,18 @@ export default function App() {
   return (
     <div className="game-wrapper">
       <div className="question-card">
-        <div className="question-meta">
-          <span>{current.category} · {current.difficulty}</span>
-          <span>Question {currentIndex + 1} of {filtered.length}</span>
+
+        <div className="progress-wrapper">
+          <div className="question-meta">
+            <span>{current.category} · {current.difficulty}</span>
+            <span>Question {currentIndex + 1} of {filtered.length}</span>
+          </div>
+          <div className="progress-track">
+            <div
+              className="progress-fill"
+              style={{ width: `${((currentIndex + 1) / filtered.length) * 100}%` }}
+            />
+          </div>
         </div>
 
         <p className="question-text">{current.question}</p>
@@ -339,6 +364,7 @@ export default function App() {
             onClick={handleNext}
           />
         )}
+
       </div>
     </div>
   );
