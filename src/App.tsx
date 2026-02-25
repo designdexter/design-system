@@ -164,6 +164,48 @@ const questions = [
       difficulty: "intermediate",
       category: "Design Principles",
       explanation: "Hick's Law states that the time it takes for a user to make a decision increases as the number of options increases. This is why it's important to keep choices simple and limited."
+    },
+    {id: 13,
+      question: "According to Gestalt principles, what term describes our tendency to group objects that are close together as belonging to the same unit?",
+      options: [
+        "Similarity",
+        "Continuity",
+        "Closure",
+        "Proximity"
+    ],
+      answer: 3,
+      difficulty: "intermediate",
+      category: "Design Principles",
+      explanation: "Proximity is a Gestalt principle that describes our tendency to group objects that are close together as belonging to the same unit."
+    },
+    {id: 14,
+      question: "Nielsen's research found that a small number of participants is enough to uncover the majority of usability issues. What is that number?",
+      options: [
+        "3",
+        "4",
+        "5",
+        "20"
+      ],
+      answer: 2,
+      difficulty: "intermediate",
+      category: "Research Methods",
+      explanation: "Nielsen's research found that 5 participants are enough to uncover the majority of usability issues in a product."
+    },
+    {id: 15,
+      question: "What is the 'Zeigarnik Effect' in user experience?",
+      options: [
+        "The tendency for users to remember completed tasks better than incomplete ones",
+        "The tendency for users to prefer interfaces that are visually balanced",
+        "The tendency for users to be more engaged with content that is interactive",
+        "The tendency for users to remember uncompleted or interrupted tasks better than completed ones"
+      ],
+      answer: 3,
+      difficulty: "advanced",
+      category: "Psychology",
+      explanation: "The Zeigarnik Effect is the psychological phenomenon where people remember uncompleted or interrupted tasks better than completed ones, which can be leveraged in UX design to encourage user engagement."
+    },
+    {id: 16,
+      question: "Don Norman identified two 'gulfs' that explain where breakdowns in human-computer interaction occur. Which answer correctly names both?",
     }
 ];
 
@@ -185,6 +227,10 @@ export default function App() {
   const filtered = questions.filter(q => q.difficulty === level);
   const current = filtered[currentIndex];
   const isLast = currentIndex === filtered.length - 1;
+
+  if (!current || !current.options) {
+    return null;
+  }
 
   function startGame(chosenLevel: Level) {
     setLevel(chosenLevel);
