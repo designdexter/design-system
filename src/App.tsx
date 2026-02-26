@@ -1,9 +1,13 @@
 import './App.css';
+import './styles/game.css';
 import { useState } from 'react';
-import { Button } from './stories/Button';
+import { WelcomeScreen } from './screens/WelcomeScreen';
+import { QuestionScreen } from './screens/QuestionScreen';
+import { ResultsScreen } from './screens/ResultsScreen';
+import type { QuestionProps } from './components/QuestionCard';
 
 // ── Question Bank ──────────────────────────────────────────────
-const questions = [
+const questionsBank = [
   {
     id: 1,
     question: "What does 'affordance' mean in UX design?",
@@ -13,8 +17,8 @@ const questions = [
       "A type of usability testing method",
       "The spacing between UI elements"
     ],
-    answer: 0,
-    difficulty: "beginner",
+    answerIndex: 0,
+    difficulty: "beginner" as const,
     category: "Fundamentals",
     explanation: "An affordance is a design property that signals how an object should be used — like a button that looks pressable."
   },
@@ -27,8 +31,8 @@ const questions = [
       "Help users recognize, diagnose and recover from errors",
       "Consistency and standards"
     ],
-    answer: 2,
-    difficulty: "beginner",
+    answerIndex: 2,
+    difficulty: "beginner" as const,
     category: "Heuristics",
     explanation: "Heuristic #9 is about helping users understand what went wrong and how to fix it — not just showing a generic error."
   },
@@ -41,9 +45,9 @@ const questions = [
       "User's age and experience level",
       "Screen resolution and pixel density"
     ],
-    answer: 1,
-    difficulty: "intermediate",
-    category: "Design Principles",
+    answerIndex: 1,
+    difficulty: "intermediate" as const,
+    category: "Principles",
     explanation: "Fitts's Law: the further away and smaller a target is, the longer it takes to click. This is why primary CTAs should be large and easy to reach."
   },
   {
@@ -55,9 +59,9 @@ const questions = [
       "To show a loading progress bar to users",
       "To display content based on user location"
     ],
-    answer: 1,
-    difficulty: "intermediate",
-    category: "Interaction Patterns",
+    answerIndex: 1,
+    difficulty: "intermediate" as const,
+    category: "Interaction",
     explanation: "Progressive disclosure reduces cognitive load by showing only what's necessary upfront, revealing more detail as the user needs it."
   },
   {
@@ -69,8 +73,8 @@ const questions = [
       "At least 4.5:1 for normal text",
       "At least 7:1 for all text"
     ],
-    answer: 2,
-    difficulty: "advanced",
+    answerIndex: 2,
+    difficulty: "advanced" as const,
     category: "Accessibility",
     explanation: "WCAG 2.1 AA requires a minimum 4.5:1 contrast ratio for normal text and 3:1 for large text (18pt+ or 14pt+ bold)."
   },
@@ -83,24 +87,19 @@ const questions = [
       "Users prefer experiences that have a clear beginning, middle, and end",
       "Users are more likely to return to an experience if it ends on a positive note"
     ],
-    answer: 1,
-    difficulty: "advanced",
+    answerIndex: 1,
+    difficulty: "advanced" as const,
     category: "Psychology",
-    explanation: "The peak-end rule suggests that people judge an experience largely based on how they felt at its most intense point and at its end, rather than the total sum or average of every moment."
+    explanation: "The peak-end rule suggests that people judge an experience largely based on how they felt at its most intense point and at its end, rather than the total average."
   },
   {
     id: 7,
     question: "Which of the following is NOT a common method for conducting user research?",
-    options: [
-      "Surveys",
-      "A/B testing",
-      "Card sorting",
-      "Heatmaps"
-    ],
-    answer: 1,
-    difficulty: "beginner",
+    options: ["Surveys", "A/B testing", "Card sorting", "Heatmaps"],
+    answerIndex: 1,
+    difficulty: "beginner" as const,
     category: "User Research",
-    explanation: "A/B testing is a method for comparing two versions of a design to see which performs better, but it's not typically used for gathering qualitative user insights like surveys, card sorting, or heatmaps."
+    explanation: "A/B testing is empirical testing of live components, but typically user research refers to generative/qualitative work like surveys or card sorting."
   },
   {
     id: 8,
@@ -111,261 +110,80 @@ const questions = [
       "To prioritize touch interactions over mouse interactions",
       "To use mobile design patterns on desktop interfaces"
     ],
-    answer: 1,
-    difficulty: "intermediate",
+    answerIndex: 1,
+    difficulty: "intermediate" as const,
     category: "Responsive Design",
-    explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring that the core content and functionality are prioritized before adding enhancements for larger screens."
-  },
-  {
-    id: 9,
-    question: "In UX writing, what does the term 'microcopy' refer to?",
-    options: [
-      "The main body of text on a webpage",
-      "Short pieces of text that guide users through an interface",
-      "Legal disclaimers and terms of service",
-      "The font size used for body text"
-    ],
-    answer: 1,
-    difficulty: "beginner",
-    category: "UX Writing",
-    explanation: "Microcopy refers to the small bits of text that help users navigate an interface, such as button labels, error messages, and tooltips."
-  },
-  {
-    id: 10,
-    question: "What is a 'dark pattern' in UX design?",
-    options: [
-      "A design that uses dark colors to create a moody atmosphere",
-      "A design that intentionally tricks users into doing something they might not want to do",
-      "A design that is optimized for use in low-light environments",
-      "A design that follows the latest trends in UI aesthetics"
-    ],
-    answer: 1,
-    difficulty: "advanced",
-    category: "Ethics",
-    explanation: "Dark patterns are deceptive design techniques used to manipulate users into taking actions they might not otherwise take, such as signing up for a newsletter or making a purchase."
-  },
-  {
-    id: 11,
-    question: "Which of the following is an example of a 'call to action' (CTA) in UX design?",
-    options: [
-      "A headline that describes the product",
-      "A button that prompts users to take a specific action",
-      "A navigation menu that links to different pages",
-      "A footer that contains contact information"
-    ],
-    answer: 1,
-    difficulty: "beginner",
-    category: "UI Elements",
-    explanation: "A call to action (CTA) is a button or link that encourages users to take a specific action, such as 'Sign Up', 'Buy Now', or 'Learn More'."
-  },
-  {
-    id: 12,
-    question: "What is 'Hick's Law' in UX design?",
-    options: [
-      "The time it takes to make a decision increases with the number of options",
-      "Users prefer interfaces that follow a hierarchical structure",
-      "The more features an app has, the more likely users are to use it",
-      "Users are more likely to engage with content that is visually appealing"
-    ],
-    answer: 0,
-    difficulty: "intermediate",
-    category: "Design Principles",
-    explanation: "Hick's Law states that the time it takes for a user to make a decision increases as the number of options increases. This is why it's important to keep choices simple and limited."
-  },
-  {
-    id: 13,
-    question: "According to Gestalt principles, what term describes our tendency to group objects that are close together?",
-    options: [
-      "Similarity",
-      "Continuity",
-      "Closure",
-      "Proximity"
-    ],
-    answer: 3,
-    difficulty: "intermediate",
-    category: "Design Principles",
-    explanation: "Proximity is a Gestalt principle that describes our tendency to group objects that are close together as belonging to the same unit."
-  },
-  {
-    id: 14,
-    question: "Nielsen's research found that a small number of participants is enough to uncover the majority of usability issues. What is that number?",
-    options: [
-      "3",
-      "4",
-      "5",
-      "20"
-    ],
-    answer: 2,
-    difficulty: "intermediate",
-    category: "Research Methods",
-    explanation: "Nielsen's research found that 5 participants are enough to uncover the majority of usability issues in a product."
-  },
-  {
-    id: 15,
-    question: "What is the 'Zeigarnik Effect' in user experience?",
-    options: [
-      "The tendency for users to remember completed tasks better than incomplete ones",
-      "The tendency for users to prefer interfaces that are visually balanced",
-      "The tendency for users to be more engaged with content that is interactive",
-      "The tendency for users to remember uncompleted or interrupted tasks better than completed ones"
-    ],
-    answer: 3,
-    difficulty: "advanced",
-    category: "Psychology",
-    explanation: "The Zeigarnik Effect is the psychological phenomenon where people remember uncompleted or interrupted tasks better than completed ones, which can be leveraged in UX design to encourage user engagement."
-  },
-  {
-    id: 16,
-    question: "Don Norman identified two 'gulfs' that explain where breakdowns in human-computer interaction occur. Which answer correctly names both?",
-    options: [
-      "Gulf of Execution and Gulf of Evaluation",
-      "Gulf of Perception and Gulf of Action",
-      "Gulf of Intention and Gulf of Feedback",
-      "Gulf of Cognition and Gulf of Emotion"
-    ],
-    answer: 0,
-    difficulty: "advanced",
-    category: "Design Principles",
-    explanation: "Don Norman's two gulfs: the Gulf of Execution (difficulty figuring out how to make a system do what you want) and the Gulf of Evaluation (difficulty figuring out whether the system has done what you wanted)."
+    explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring the core functionality is prioritized."
   }
 ];
 
-// ── Types ──────────────────────────────────────────────────────
-type Screen = 'welcome' | 'game' | 'results';
+type ScreenState = 'welcome' | 'game' | 'results';
 type Level = 'beginner' | 'intermediate' | 'advanced';
 
-// ── App ────────────────────────────────────────────────────────
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('welcome');
+  const [screen, setScreen] = useState<ScreenState>('welcome');
   const [level, setLevel] = useState<Level>('beginner');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
-  const filtered = questions.filter(q => q.difficulty === level);
-  const current = filtered[currentIndex];
-  const isLast = currentIndex === filtered.length - 1;
+  // Array to track if each question was answered correctly
+  const [history, setHistory] = useState<boolean[]>([]);
 
-  if (!current || !current.options) return null;
+  const filteredQuestions: QuestionProps[] = questionsBank.filter(
+    (q) => q.difficulty === level
+  );
 
-  function startGame(chosenLevel: Level) {
+  const startGame = (chosenLevel: Level) => {
     setLevel(chosenLevel);
     setCurrentIndex(0);
-    setSelected(null);
-    setScore(0);
+    setSelectedAnswer(null);
+    setHistory([]);
     setScreen('game');
-  }
+  };
 
-  function handleAnswer(index: number) {
-    if (selected !== null) return;
-    setSelected(index);
-    if (index === current.answer) {
-      setScore(s => s + 1);
-    }
-  }
+  const handleAnswer = (index: number, isCorrect: boolean) => {
+    if (selectedAnswer !== null) return;
+    setSelectedAnswer(index);
+    setHistory((prev) => [...prev, isCorrect]);
+  };
 
-  function handleNext() {
-    if (isLast) {
+  const handleNext = () => {
+    if (currentIndex === filteredQuestions.length - 1) {
       setScreen('results');
     } else {
-      setCurrentIndex(i => i + 1);
-      setSelected(null);
+      setCurrentIndex((prev) => prev + 1);
+      setSelectedAnswer(null);
     }
-  }
+  };
 
-  function restart() {
-    setScreen('welcome');
-    setCurrentIndex(0);
-    setSelected(null);
-    setScore(0);
-  }
+  const score = history.filter(Boolean).length;
 
-  // ── Welcome Screen
-  if (screen === 'welcome') {
-    return (
-      <div className="game-wrapper">
-        <div className="welcome-card">
-          <h1>UX Trivia</h1>
-          <p>Test your UX, UI and interaction design knowledge. Pick your level to begin.</p>
-          <div className="level-buttons">
-            <Button label="Beginner" severity="primary" onClick={() => startGame('beginner')} />
-            <Button label="Intermediate" severity="info" onClick={() => startGame('intermediate')} />
-            <Button label="Advanced" severity="help" onClick={() => startGame('advanced')} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // ── Results Screen
-  if (screen === 'results') {
-    return (
-      <div className="game-wrapper">
-        <div className="results-card">
-          <div className="score-display">{score}/{filtered.length}</div>
-          <h2>{score === filtered.length ? 'Perfect score! 🎉' : score >= filtered.length / 2 ? 'Nice work! 👍' : 'Keep practising! 💪'}</h2>
-          <p>You answered {score} out of {filtered.length} questions correctly on {level} level.</p>
-          <Button label="Play Again" severity="primary" onClick={restart} />
-        </div>
-      </div>
-    );
-  }
-
-  // ── Game Screen
   return (
-    <div className="game-wrapper">
-      <div className="question-card">
+    <div className="app-container">
+      {screen === 'welcome' && (
+        <WelcomeScreen onStart={startGame} />
+      )}
 
-        <div className="progress-wrapper">
-          <div className="question-meta">
-            <span>{current.category} · {current.difficulty}</span>
-            <span>Question {currentIndex + 1} of {filtered.length}</span>
-          </div>
-          <div className="progress-track">
-            <div
-              className="progress-fill"
-              style={{ width: `${((currentIndex + 1) / filtered.length) * 100}%` }}
-            />
-          </div>
-        </div>
+      {screen === 'game' && (
+        <QuestionScreen
+          questions={filteredQuestions}
+          currentIndex={currentIndex}
+          onAnswer={handleAnswer}
+          onNext={handleNext}
+          selectedAnswer={selectedAnswer}
+        />
+      )}
 
-        <p className="question-text">{current.question}</p>
-
-        <div className="answer-buttons">
-          {current.options.map((option, i) => {
-            let className = 'answer-btn';
-            if (selected !== null) {
-              if (i === current.answer) className += ' correct';
-              else if (i === selected) className += ' wrong';
-            }
-            return (
-              <button
-                key={i}
-                className={className}
-                onClick={() => handleAnswer(i)}
-                disabled={selected !== null}
-              >
-                {option}
-              </button>
-            );
-          })}
-        </div>
-
-        {selected !== null && (
-          <div className="explanation">
-            💡 {current.explanation}
-          </div>
-        )}
-
-        {selected !== null && (
-          <Button
-            label={isLast ? 'See Results' : 'Next Question'}
-            severity="primary"
-            onClick={handleNext}
-          />
-        )}
-
-      </div>
+      {screen === 'results' && (
+        <ResultsScreen
+          score={score}
+          total={filteredQuestions.length}
+          questions={filteredQuestions}
+          history={history}
+          onPlayAgain={() => setScreen('welcome')}
+          onRestartSameLevel={() => startGame(level)}
+        />
+      )}
     </div>
   );
 }

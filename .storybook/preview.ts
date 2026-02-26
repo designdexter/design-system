@@ -1,12 +1,13 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/stories/tokens.css'
+import '../src/styles/game.css'
 
 const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 

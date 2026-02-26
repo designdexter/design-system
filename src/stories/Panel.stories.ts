@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
+
 import { Panel } from './Panel';
 
 const meta = {
@@ -8,10 +8,10 @@ const meta = {
   parameters: { layout: 'padded' },
   tags: ['autodocs'],
   argTypes: {
-    toggleable:        { control: 'boolean' },
-    defaultCollapsed:  { control: 'boolean' },
-    header:            { control: 'text' },
-    content:           { control: 'text' },
+    toggleable: { control: 'boolean' },
+    defaultCollapsed: { control: 'boolean' },
+    header: { control: 'text' },
+    content: { control: 'text' },
   },
 } satisfies Meta<typeof Panel>;
 
