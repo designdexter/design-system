@@ -1,7 +1,6 @@
 import './App.css';
 import './styles/game.css';
 import { useState } from 'react';
-import { WelcomeScreen } from './screens/WelcomeScreen';
 import { QuestionScreen } from './screens/QuestionScreen';
 import { ResultsScreen } from './screens/ResultsScreen';
 import type { QuestionProps } from './components/QuestionCard';
@@ -158,10 +157,52 @@ export default function App() {
 
   const score = history.filter(Boolean).length;
 
+  const levelMeta = {
+    beginner:     { icon: '🌱', desc: 'Core UX concepts & terminology', count: questionsBank.filter(q => q.difficulty === 'beginner').length },
+    intermediate: { icon: '⚡', desc: 'Heuristics, patterns & principles', count: questionsBank.filter(q => q.difficulty === 'intermediate').length },
+    advanced:     { icon: '🔥', desc: 'Deep theory & edge cases', count: questionsBank.filter(q => q.difficulty === 'advanced').length },
+  };
+
+  const sampleQuestion = "What does 'affordance' mean in UX design?";
+
   return (
     <div className="app-container">
       {screen === 'welcome' && (
-        <WelcomeScreen onStart={startGame} />
+        <div className="welcome-wrapper">
+          <div className="welcome-preview-card">
+            "{sampleQuestion}"
+          </div>
+
+          <div className="welcome-header">
+            <h1 className="welcome-title">UX Trivia</h1>
+            <p className="welcome-subtitle">{questionsBank.length} questions · Test your design knowledge</p>
+          </div>
+
+          <div className="difficulty-list">
+            <p className="difficulty-label">Choose a level</p>
+
+            {(['beginner', 'intermediate', 'advanced'] as const).map((lvl) => (
+              <button
+                key={lvl}
+                className="difficulty-card"
+                onClick={() => startGame(lvl)}
+              >
+                <span className={`difficulty-icon ${lvl}`}>
+                  {levelMeta[lvl].icon}
+                </span>
+                <span className="difficulty-info">
+                  <span className="difficulty-name">
+                    {lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+                  </span>
+                  <span className="difficulty-desc">
+                    {levelMeta[lvl].desc} · {levelMeta[lvl].count} questions
+                  </span>
+                </span>
+                <span className="difficulty-arrow">›</span>
+              </button>
+            ))}
+          </div>
+        </div>
       )}
 
       {screen === 'game' && (
