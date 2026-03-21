@@ -125,6 +125,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   padding: 24px 0;
+  gap: 24px;
 }
 
 .path-line {
