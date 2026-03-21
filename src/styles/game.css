@@ -30,7 +30,7 @@
   .screen-game,
   .screen-results {
     width: 390px;
-    min-height: auto;
+    min-height: 812px;
     border-radius: 32px;
     box-shadow:
       0 20px 60px rgba(59, 130, 246, 0.12),
