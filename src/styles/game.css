@@ -61,24 +61,15 @@
   flex-shrink: 0;
 }
 
-.topbar--score-only {
-  justify-content: flex-end;
-}
-
-.topbar-back {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #f5f5f5;
-  border: 1px solid #e0e0e0;
+.back-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  font-size: 24px;
-  color: var(--color-text);
-  line-height: 1;
-  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
 }
 
 .topbar-counter {
@@ -87,6 +78,11 @@
   color: var(--surface-900);
   text-align: center;
   flex: 1;
+}
+
+.topbar-spacer {
+  width: 36px;
+  flex-shrink: 0;
 }
 
 .topbar-score {

@@ -1,4 +1,5 @@
 import { AnswerOption } from '../components/AnswerOption';
+import { BackButton } from '../components/BackButton';
 import { Button } from '../stories/Button';
 import type { Level, Question } from '../types';
 
@@ -47,9 +48,9 @@ export function QuestionScreen({
     <div className="screen-game">
       {/* Top bar */}
       <div className="topbar">
-        <button className="topbar-back" onClick={onBack} aria-label="Back">←</button>
+        <BackButton onClick={onBack} />
         <span className="topbar-counter">{questionNumber} / {total}</span>
-        <div className="topbar-score">⚡</div>
+        <div className="topbar-spacer" />
       </div>
 
       {/* Progress bar */}
