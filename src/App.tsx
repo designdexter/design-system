@@ -54,11 +54,11 @@ const questionsBank: Question[] = [
     question: "What is the primary purpose of a 'progressive disclosure' pattern?",
     options: [
       "To animate content onto the screen gradually",
-      "To hide complexity and reveal details only when needed",
       "To show a loading progress bar to users",
+      "To hide complexity and reveal details only when needed",
       "To display content based on user location"
     ],
-    answerIndex: 1,
+    answerIndex: 2,
     difficulty: 'intermediate',
     category: 'Interaction',
     explanation: "Progressive disclosure reduces cognitive load by showing only what's necessary upfront, revealing more detail as the user needs it."
@@ -105,11 +105,11 @@ const questionsBank: Question[] = [
     question: "What is the main goal of 'mobile-first' design?",
     options: [
       "To create a separate mobile app for users",
-      "To design for the smallest screen first and then scale up",
       "To prioritize touch interactions over mouse interactions",
-      "To use mobile design patterns on desktop interfaces"
+      "To use mobile design patterns on desktop interfaces",
+      "To design for the smallest screen first and then scale up"
     ],
-    answerIndex: 1,
+    answerIndex: 3,
     difficulty: 'intermediate',
     category: 'Responsive Design',
     explanation: "Mobile-first design means starting the design process with the smallest screen in mind, ensuring the core functionality is prioritized."
@@ -173,8 +173,8 @@ const questionsBank: Question[] = [
   {
     id: 13,
     question: "According to Gestalt principles, what term describes our tendency to group objects that are close together?",
-    options: ["Similarity", "Continuity", "Closure", "Proximity"],
-    answerIndex: 3,
+    options: ["Similarity", "Continuity", "Proximity", "Closure"],
+    answerIndex: 2,
     difficulty: 'intermediate',
     category: 'Principles',
     explanation: "Proximity is a Gestalt principle — we group objects that are close together as belonging to the same unit."
@@ -182,8 +182,8 @@ const questionsBank: Question[] = [
   {
     id: 14,
     question: "Nielsen's research found that a small number of participants uncovers the majority of usability issues. What is that number?",
-    options: ["3", "4", "5", "20"],
-    answerIndex: 2,
+    options: ["3", "5", "4", "20"],
+    answerIndex: 1,
     difficulty: 'intermediate',
     category: 'Research Methods',
     explanation: "Nielsen's research found that 5 participants are enough to uncover the majority of usability issues in a product."
@@ -314,7 +314,12 @@ export default function App() {
           history={history}
           level={level}
           elapsedSeconds={elapsedSeconds}
-          onPlayAgain={() => setScreen('map')}
+          onHome={handleBack}
+          onTryAgain={() => startGame(level)}
+          onStartNext={() => {
+            const next = level === 'beginner' ? 'intermediate' : 'advanced';
+            startGame(next);
+          }}
         />
       )}
     </div>

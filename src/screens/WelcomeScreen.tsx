@@ -67,6 +67,9 @@ export function WelcomeScreen({ getLevelStatus, questionsBank, onStart }: Welcom
           <div className="path-spacer" />
         </div>
 
+        {/* Connector: Beginner → Intermediate */}
+        <div className={`path-connector${getLevelStatus('beginner') === 'done' ? ' path-connector--active' : ''}`} />
+
         {/* Intermediate — node left, label right */}
         <div className="path-row path-row--right">
           <div className="path-spacer" />
@@ -84,6 +87,9 @@ export function WelcomeScreen({ getLevelStatus, questionsBank, onStart }: Welcom
             </span>
           </div>
         </div>
+
+        {/* Connector: Intermediate → Advanced */}
+        <div className={`path-connector${getLevelStatus('intermediate') === 'done' ? ' path-connector--active' : ''}`} />
 
         {/* Advanced — label left, node right */}
         <div className="path-row path-row--left">

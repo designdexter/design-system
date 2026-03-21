@@ -1,5 +1,6 @@
 import html2canvas from 'html2canvas';
 import { Button } from '../stories/Button';
+import { BackButton } from '../components/BackButton';
 import { BreakdownRow } from '../components/BreakdownRow';
 import type { Level, Question } from '../types';
 
@@ -10,13 +11,21 @@ type ResultsScreenProps = {
   history: boolean[];
   level: Level;
   elapsedSeconds: number;
-  onPlayAgain: () => void;
+  onHome: () => void;
+  onTryAgain: () => void;
+  onStartNext: () => void;
 };
 
 const LEVEL_LABELS: Record<Level, string> = {
   beginner: 'Beginner',
   intermediate: 'Intermediate',
   advanced: 'Advanced',
+};
+
+const NEXT_LEVEL: Record<Level, Level | null> = {
+  beginner: 'intermediate',
+  intermediate: 'advanced',
+  advanced: null,
 };
 
 function formatTime(seconds: number): string {
@@ -32,16 +41,24 @@ export function ResultsScreen({
   history,
   level,
   elapsedSeconds,
-  onPlayAgain,
+  onHome,
+  onTryAgain,
+  onStartNext,
 }: ResultsScreenProps) {
   const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
   const passed = percentage >= 60;
+  const nextLevel = NEXT_LEVEL[level];
 
   const performanceMessage =
     percentage === 100 ? 'Perfect score! 🎉' :
     percentage >= 80   ? 'Excellent work! 🌟' :
     percentage >= 60   ? 'Great job! 👏' :
                          'Keep practising! 💪';
+
+  const ctaLabel =
+    !passed              ? 'Try Again' :
+    nextLevel === null   ? 'Play Again' :
+                           `Start ${LEVEL_LABELS[nextLevel]}`;
 
   const handleShare = async () => {
     const el = document.getElementById('share-card');
@@ -75,6 +92,11 @@ export function ResultsScreen({
 
   return (
     <div className="screen-results">
+      {/* Top bar */}
+      <div className="results-topbar">
+        <BackButton onClick={onHome} />
+      </div>
+
       {/* Shareable hero card */}
       <div id="share-card" className="results-hero">
         {/* Decorative dots */}
@@ -93,10 +115,6 @@ export function ResultsScreen({
         <p className="results-performance">{performanceMessage}</p>
         <p className="results-score">{score} / {total}</p>
         <p className="results-subtitle">{LEVEL_LABELS[level]} · {percentage}% correct</p>
-
-        {!passed && (
-          <p className="results-fail-note">You need 60% to unlock the next level</p>
-        )}
       </div>
 
       {/* Stats row */}
@@ -127,8 +145,17 @@ export function ResultsScreen({
 
       {/* Actions */}
       <div className="results-actions">
-        <Button label="Share Results" severity="primary" outlined rounded onClick={handleShare} />
-        <Button label="Play Again" severity="primary" rounded onClick={onPlayAgain} />
+        {passed ? (
+          <Button label="Share Results" severity="primary" outlined rounded onClick={handleShare} />
+        ) : (
+          <p className="results-progress-note">Score 60% or above to progress to the next level</p>
+        )}
+        <Button
+          label={ctaLabel}
+          severity="primary"
+          rounded
+          onClick={passed && nextLevel ? onStartNext : onTryAgain}
+        />
       </div>
     </div>
   );
