@@ -94,8 +94,8 @@ const questionsBank: Question[] = [
   {
     id: 7,
     question: "Which of the following is NOT a common method for conducting user research?",
-    options: ["Surveys", "A/B testing", "Card sorting", "Heatmaps"],
-    answerIndex: 1,
+    options: ["Surveys", "Card sorting", "Heatmaps", "A/B testing"],
+    answerIndex: 3,
     difficulty: 'beginner',
     category: 'User Research',
     explanation: "A/B testing is empirical testing of live variants — user research typically refers to generative/qualitative work like surveys or card sorting."
@@ -118,12 +118,12 @@ const questionsBank: Question[] = [
     id: 9,
     question: "In UX writing, what does the term 'microcopy' refer to?",
     options: [
-      "The main body of text on a webpage",
       "Short pieces of text that guide users through an interface",
+      "The main body of text on a webpage",
       "Legal disclaimers and terms of service",
       "The font size used for body text"
     ],
-    answerIndex: 1,
+    answerIndex: 0,
     difficulty: 'beginner',
     category: 'UX Writing',
     explanation: "Microcopy refers to the small bits of text that help users navigate an interface, such as button labels, error messages, and tooltips."
@@ -147,11 +147,11 @@ const questionsBank: Question[] = [
     question: "Which of the following is an example of a 'call to action' (CTA) in UX design?",
     options: [
       "A headline that describes the product",
-      "A button that prompts users to take a specific action",
       "A navigation menu that links to different pages",
-      "A footer that contains contact information"
+      "A footer that contains contact information",
+      "A button that prompts users to take a specific action"
     ],
-    answerIndex: 1,
+    answerIndex: 3,
     difficulty: 'beginner',
     category: 'UI Elements',
     explanation: "A CTA is a button or link that encourages users to take a specific action, such as 'Sign Up', 'Buy Now', or 'Learn More'."
