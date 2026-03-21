@@ -29,6 +29,7 @@
   .screen-map,
   .screen-game,
   .screen-results {
+    width: 390px;
     min-height: auto;
     border-radius: 32px;
     box-shadow:
