@@ -1,37 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ResultBreakdown } from './ResultBreakdown';
+import { BreakdownRow } from './BreakdownRow';
+import '../styles/game.css';
 
 const meta = {
-    title: 'Game UI/ResultBreakdown',
-    component: ResultBreakdown,
+    title: 'Game UI/BreakdownRow',
+    component: BreakdownRow,
     parameters: { layout: 'padded' },
     tags: ['autodocs'],
     argTypes: {
-        categories: { control: 'object' },
+        question: { control: 'text' },
+        isCorrect: { control: 'boolean' },
     },
-} satisfies Meta<typeof ResultBreakdown>;
+} satisfies Meta<typeof BreakdownRow>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Correct: Story = {
     args: {
-        categories: {
-            'Fundamentals': { correct: 2, total: 2 },
-            'Interaction Patterns': { correct: 1, total: 3 },
-            'Psychology': { correct: 0, total: 2 },
-            'Accessibility': { correct: 1, total: 1 },
-        },
+        question: "What does 'affordance' mean in UX design?",
+        isCorrect: true,
     },
 };
 
-export const Perfect: Story = {
+export const Incorrect: Story = {
     args: {
-        categories: {
-            'Fundamentals': { correct: 2, total: 2 },
-            'Interaction Patterns': { correct: 3, total: 3 },
-            'Psychology': { correct: 2, total: 2 },
-            'Accessibility': { correct: 1, total: 1 },
-        },
+        question: "Which of Nielsen's 10 heuristics relates to error messages?",
+        isCorrect: false,
     },
 };

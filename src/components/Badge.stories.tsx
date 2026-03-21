@@ -1,47 +1,43 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Badge } from './Badge';
+import '../styles/game.css';
+
+type DifficultyBadgeProps = {
+    level: 'beginner' | 'intermediate' | 'advanced';
+};
+
+function DifficultyBadge({ level }: DifficultyBadgeProps) {
+    const labels = { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' };
+    return (
+        <span className={`difficulty-badge difficulty-badge--${level}`}>
+            {labels[level]}
+        </span>
+    );
+}
 
 const meta = {
-    title: 'Game UI/Badge',
-    component: Badge,
+    title: 'Game UI/DifficultyBadge',
+    component: DifficultyBadge,
     parameters: { layout: 'centered' },
     tags: ['autodocs'],
     argTypes: {
-        label: { control: 'text' },
-        type: {
+        level: {
             control: 'select',
-            options: ['info', 'beginner', 'intermediate', 'advanced'],
+            options: ['beginner', 'intermediate', 'advanced'],
         },
     },
-} satisfies Meta<typeof Badge>;
+} satisfies Meta<typeof DifficultyBadge>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Info: Story = {
-    args: {
-        label: 'Fundamentals',
-        type: 'info',
-    },
-};
-
 export const Beginner: Story = {
-    args: {
-        label: 'beginner',
-        type: 'beginner',
-    },
+    args: { level: 'beginner' },
 };
 
 export const Intermediate: Story = {
-    args: {
-        label: 'intermediate',
-        type: 'intermediate',
-    },
+    args: { level: 'intermediate' },
 };
 
 export const Advanced: Story = {
-    args: {
-        label: 'advanced',
-        type: 'advanced',
-    },
+    args: { level: 'advanced' },
 };
