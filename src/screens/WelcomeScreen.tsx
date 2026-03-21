@@ -40,7 +40,6 @@ export function WelcomeScreen({ getLevelStatus, questionsBank, onStart }: Welcom
     <div className="screen-map">
       {/* Top bar */}
       <div className="topbar">
-        <div className="topbar-back" aria-label="Back">←</div>
         <div className="topbar-score">0 ⚡</div>
       </div>
 
